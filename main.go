@@ -18,15 +18,18 @@ func main() {
 
 	hh := handlers.NewHello(l)
 	gh := handlers.NewGoodbye(l)
+	ph := handlers.NewProducts(l)
 
 	sm := http.NewServeMux()
 
 	sm.HandleFunc("/hello", hh.ServeHTTP)
 	sm.HandleFunc("/goodbye", gh.ServeHTTP)
+	sm.HandleFunc("/products", ph.ServeHTTP)
 
 	s := &http.Server{
-		Addr:         "localhost:9090",
+		Addr:         "localhost:8080",
 		Handler:      sm,
+		ErrorLog:     l,
 		IdleTimeout:  120 * time.Second,
 		ReadTimeout:  1 * time.Second,
 		WriteTimeout: 1 * time.Second,
