@@ -1,8 +1,6 @@
 package main
 
 import (
-	//"fmt"
-	//"io/ioutil"
 	"context"
 	"log"
 	"net/http"
@@ -24,7 +22,7 @@ func main() {
 
 	sm.HandleFunc("/hello", hh.ServeHTTP)
 	sm.HandleFunc("/goodbye", gh.ServeHTTP)
-	sm.HandleFunc("/products", ph.ServeHTTP)
+	sm.HandleFunc("/", ph.ServeHTTP)
 
 	s := &http.Server{
 		Addr:         "localhost:8080",
